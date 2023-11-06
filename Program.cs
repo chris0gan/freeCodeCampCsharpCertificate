@@ -1,7 +1,5 @@
-﻿// string first = "Hello";
-// string second = "World";
-// string result = string.Format("{0} {1}!", first, second);
-// Console.WriteLine(result);
+﻿string paymentId = "769C";
 
-string input = "Pad this";
-Console.WriteLine(input.PadLeft(12));
+var formattedLine = paymentId.PadRight(6);
+
+Console.WriteLine(formattedLine);
