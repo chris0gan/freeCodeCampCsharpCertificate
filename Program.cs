@@ -1,3 +1,2 @@
-﻿decimal price = 123.45m;
-int discount = 50;
-Console.WriteLine($"Price: {price:C} (Save {discount})");
+﻿decimal measurement = 123456.78912m;
+Console.WriteLine($"Measurement: {measurement:N} units");
