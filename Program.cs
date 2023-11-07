@@ -10,6 +10,9 @@ if(ValidateLength() && ValidateZeroes() && ValidateRange()) {
     Console.WriteLine($"ip is an invalid IPv4 address");
 }
 
-void ValidateLength() {}
+void ValidateLength() {
+    string[] address = ipv4Input.Split(".");
+    validLength = address.Length == 4;
+}
 void ValidateZeroes() {}
 void ValidateRange() {}
