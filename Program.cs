@@ -137,8 +137,12 @@ do
                 if(readResult != null) {
                     dogCharcteristic = readResult.ToLower().Trim();
                 }
+            } 
+            // #6 loop through the ourAnimals array to search for matching animals
+            for (int i = 0; i < maxPets; i++) {
+                if (ourAnimals[i, 1].Contains("dog")) { // #7 Search combined descriptions and report results
+                }
             }
-
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
