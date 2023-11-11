@@ -1,25 +1,23 @@
-﻿string input = "there are snakes at the zoo";
+﻿string[] words = {"racecar" ,"talented", "deified", "tent", "tenet"};
 
-Console.WriteLine(input);
-Console.WriteLine(ReverseSentence(input));
-
-string ReverseWord(string word) {
-    string result = "";
-
-    for(int i = word.Length - 1; i >= 0; i--) {
-        result += word[i];
-    }
-
-    return result;
+Console.WriteLine("Is it a palindrome?");
+foreach (string word in words) 
+{
+    Console.WriteLine($"{word}: {IsPalindrome(word)}");
 }
 
-string ReverseSentence(string input) {
-    string result = "";
-    string[] words = input.Split(" ");
+bool IsPalindrome(string word) {
+    int start = 0;
+    int end = word.Length - 1;
 
-    foreach(string word in words) {
-        result += ReverseWord(word) + " ";
+    while(start < end) {
+
+        if(word[start] != word[end]) {
+            
+            return false;
+        }
+        start++;
+        end--;
     }
-
-    return result;
+    return true;
 }
