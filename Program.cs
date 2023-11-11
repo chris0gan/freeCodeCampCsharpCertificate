@@ -1,30 +1,26 @@
-﻿string[,] corporate = 
-	{
-		{"Robert", "Bavin"}, {"Simon", "Bright"},
-		{"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
-		{"Sarah", "Delucchi"}, {"Sinan", "Ali"}};
+﻿double total = 0;
+double minimumSpend = 30.00;
 
-	string[,] external = 
-	{
-		{"Vinnie", "Ashton"}, {"Cody", "Dysart"},
-		{"Shay", "Lawrence"}, {"Daren", "Valdes"}
-	};
+double[] items = {15.97, 3.50, 12.25, 22.99, 10.98};
+double[] discounts = {0.30, 0.00, 0.10, 0.20, 0.50};
 
-	string externalDomain = "hayworth.com";
+Console.WriteLine($"Total: ${total}");
 
-	for (int i = 0; i < corporate.GetLength(0); i++) 
-	{
-		DisplayEmail(first: corporate[i,0], last: corporate[i,1]);
-	}
+double GetDiscountedPrice(int itemIndex)
+{
+    // Calculate the discounted price of the item
+    return items[itemIndex] * (1-discounts[itemIndex]);
+    
+}
 
-	for (int i = 0; i < external.GetLength(0); i++) 
-	{
-		DisplayEmail(first: external[i,0], last: external[i,1], domain: externalDomain);
-	}
+bool TotalMeetsMinimum()
+{
+    // Check if the total meets the minimum
+    return total >= minimumSpend;
+}
 
-	void DisplayEmail(string first, string last, string domain = "contoso.com") 
-	{
-		string email = first.Substring(0, 2) + last;
-		email = email.ToLower();
-		Console.WriteLine($"{email}@{domain}");
-	}
+string FormatDecimal(double input)
+{
+    // Format the double so only 2 decimal places are displayed
+    return input.ToString().Substring(0, 5);
+}
