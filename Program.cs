@@ -1,23 +1,29 @@
-﻿string[] words = {"racecar" ,"talented", "deified", "tent", "tenet"};
+﻿Random random = new Random();
 
-Console.WriteLine("Is it a palindrome?");
-foreach (string word in words) 
+Console.WriteLine("Would you like to play? (Y/N)");
+if (ShouldPlay()) 
 {
-    Console.WriteLine($"{word}: {IsPalindrome(word)}");
+    PlayGame();
 }
 
-bool IsPalindrome(string word) {
-    int start = 0;
-    int end = word.Length - 1;
+void PlayGame() 
+{
+    var play = true;
 
-    while(start < end) {
+    while (play) 
+    {
+        var target;
+        var roll;
 
-        if(word[start] != word[end]) {
-            
-            return false;
-        }
-        start++;
-        end--;
+        Console.WriteLine($"Roll a number greater than {target} to win!");
+        Console.WriteLine($"You rolled a {roll}");
+        Console.WriteLine(WinOrLose());
+        Console.WriteLine("\nPlay again? (Y/N)");
+
+        play = ShouldPlay();
     }
+}
+
+bool ShouldPlay() {
     return true;
 }
