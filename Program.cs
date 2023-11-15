@@ -1,69 +1,31 @@
-﻿int productCount = 2000;
-string[,] products = new string[productCount, 2];
-
-LoadProducts(products, productCount);
-
-for (int i = 0; i < productCount; i++)
+﻿try
 {
-    string result;
-    result = Process1(products, i);
+    Process1();
+}
+catch
+{
+    Console.WriteLine("An exception has occurred");
+}
 
-    if (result != "obsolete")
-    {
-        result = Process2(products, i);
+Console.WriteLine("Exit program");
+
+static void Process1()
+{
+    try {
+        WriteMessage();
+    }
+    catch {
+        Console.WriteLine("Exception caught in Process1");
     }
 }
 
-bool pauseCode = true;
-while (pauseCode == true);
-
-static void LoadProducts(string[,] products, int productCount)
+static void WriteMessage()
 {
-    Random rand = new Random();
+    double float1 = 3000.0;
+    double float2 = 0.0;
+    int number1 = 3000;
+    int number2 = 0;
 
-    for (int i = 0; i < productCount; i++)
-    {
-        int num1 = rand.Next(1, 10000) + 10000;
-        int num2 = rand.Next(1, 101);
-
-        string prodID = num1.ToString();
-
-        if (num2 < 91)
-        {
-            products[i, 1] = "existing";
-        }
-        else if (num2 == 91)
-        {
-            products[i, 1] = "new";
-            prodID = prodID + "-n";
-        }
-        else
-        {
-            products[i, 1] = "obsolete";
-            prodID = prodID + "-0";
-        }
-
-        products[i, 0] = prodID;
-    }
-}
-
-static string Process1(string[,] products, int item)
-{
-    Console.WriteLine($"Process1 message - working on {products[item, 1]} product");
-
-    return products[item, 1];
-}
-
-static string Process2(string[,] products, int item)
-{
-    Console.WriteLine($"Process2 message - working on product ID #: {products[item, 0]}");
-    if (products[item, 1] == "new")
-        Process3(products, item);
-
-    return "continue";
-}
-
-static void Process3(string[,] products, int item)
-{
-    Console.WriteLine($"Process3 message - processing product information for 'new' product");
+    Console.WriteLine(float1 / float2);
+    Console.WriteLine(number1 / number2);
 }
