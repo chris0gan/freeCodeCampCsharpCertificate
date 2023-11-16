@@ -1,50 +1,41 @@
-﻿checked
+﻿// Prompt the user for the lower and upper bounds
+Console.Write("Enter the lower bound: ");
+int lowerBound = int.Parse(Console.ReadLine());
+
+
+Console.Write("Enter the upper bound: ");
+int upperBound = int.Parse(Console.ReadLine());
+
+decimal averageValue = 0;
+
+// Calculate the sum of the even numbers between the bounds
+averageValue = AverageOfEvenNumbers(lowerBound, upperBound);
+
+// Display the value returned by AverageOfEvenNumbers in the console
+Console.WriteLine($"The average of even numbers between {lowerBound} and {upperBound} is {averageValue}.");
+
+// Wait for user input
+Console.ReadLine();
+
+static decimal AverageOfEvenNumbers(int lowerBound, int upperBound)
 {
-    try
-    {
-        int num1 = int.MaxValue;
-        int num2 = int.MaxValue;
-        int result = num1 + num2;
-        Console.WriteLine("Result: " + result);
+    if(lowerBound >= upperBound) {
+        throw new ArgumentOutOfRangeException("upperBound", "ArgumentOutOfRangeException: upper bound must be great than lower bound.");
     }
-    catch (OverflowException ex)
+    int sum = 0;
+    int count = 0;
+    decimal average = 0;
+
+    for (int i = lowerBound; i <= upperBound; i++)
     {
-        Console.WriteLine("Error: The number is too large to be represented as an integer. " + ex.Message);
+        if (i % 2 == 0)
+        {
+            sum += i;
+            count++;
+        }
     }
-}
 
-try
-{
-    string? str = null;
-    int length = str.Length;
-    Console.WriteLine("String Length: " + length);
-}
-catch (NullReferenceException ex)
-{
-    Console.WriteLine("Error: The reference is null. " + ex.Message);
-}
+    average = (decimal)sum / count;
 
-try
-{
-    int[] numbers = new int[5];
-    numbers[5] = 10;
-    Console.WriteLine("Number at index 5: " + numbers[5]);
+    return average;
 }
-catch (IndexOutOfRangeException ex)
-{
-    Console.WriteLine("Error: Index out of range. " + ex.Message);
-}
-
-try
-{
-    int num3 = 10;
-    int num4 = 0;
-    int result2 = num3 / num4;
-    Console.WriteLine("Result: " + result2);
-}
-catch (DivideByZeroException ex)
-{
-    Console.WriteLine("Error: Cannot divide by zero. " + ex.Message);
-}
-
-Console.WriteLine("Exiting program.");
